@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right Minds Home | Mental Health & Addiction Recovery</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --secondary: #5cb85c;
+            --accent: #f0ad4e;
+            --dark: #34495e;
+            --light: #f9f9f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3a7bc8;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4a9d4a;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .card-icon {
+            color: var(--primary);
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .testimonial-role {
+            color: #777;
+        }
+        
+        .bg-light {
+            background-color: #f5f8fa;
+        }
+        
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full {
+            grid-column: span 2;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        
+        button[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #3a7bc8;
+        }
+        
+        .stats {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: var(--dark);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">🏡</span>
+                    Right Minds <span>Home</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#get-help" class="btn">Get Help Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Begin Your Journey to Recovery</h1>
+            <p>Right Minds Home provides compassionate care and support for individuals facing mental health challenges and addiction recovery.</p>
+            <a href="#programs" class="btn btn-secondary">Explore Our Programs</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Right Minds Home</h2>
+                <p>We believe that everyone deserves a chance to heal, grow, and thrive in a supportive environment.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">💫</div>
+                        <h3 class="card-title">Our Mission</h3>
+                        <p>To provide a nurturing environment where individuals facing mental health challenges and addiction can find healing, develop coping skills, and rebuild their lives with dignity and purpose.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">👁️</div>
+                        <h3 class="card-title">Our Vision</h3>
+                        <p>To create a world where mental health support and addiction recovery are accessible to all, stigma is eliminated, and every person has the opportunity to achieve their full potential.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">❤️</div>
+                        <h3 class="card-title">Our Values</h3>
+                        <p>Compassion, Respect, Empowerment, Evidence-based Practice, Holistic Care, Community Integration, and Continuous Improvement guide everything we do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Rehabilitation Programs</h2>
+                <p>Comprehensive, individualized care plans designed to address each person's unique needs and challenges.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="/api/placeholder/400/200" alt="Mental Health Program">
+                    <div class="card-content">
+                        <h3 class="card-title">Mental Health Rehabilitation</h3>
+                        <p>Specialized care for individuals with various mental health conditions including depression, anxiety, bipolar disorder, schizophrenia, and PTSD.</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Individual therapy sessions</li>
+                            <li>Group therapy and peer support</li>
+                            <li>Medication management</li>
+                            <li>Life skills development</li>
+                            <li>Family education and support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/api/placeholder/400/200" alt="Addiction Recovery Program">
+                    <div class="card-content">
+                        <h3 class="card-title">Addiction Recovery</h3>
+                        <p>Evidence-based treatments for substance use disorders, focusing on both physical healing and psychological well-being.</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Medically supervised detoxification</li>
+                            <li>Individual counseling</li>
+                            <li>Group therapy and 12-step facilitation</li>
+                            <li>Relapse prevention training</li>
+                            <li>Aftercare planning and support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/api/placeholder/400/200" alt="Dual Diagnosis Program">
+                    <div class="card-content">
+                        <h3 class="card-title">Dual Diagnosis Treatment</h3>
+                        <p>Integrated care for individuals experiencing both mental health issues and substance use disorders.</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Coordinated treatment approach</li>
+                            <li>Specialized dual diagnosis therapy</li>
+                            <li>Comprehensive assessment</li>
+                            <li>Personalized recovery planning</li>
+                            <li>Long-term support strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="facilities" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Facilities</h2>
+                <p>Creating healing environments that promote recovery, connection, and growth.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <img src="/api/placeholder/400/200" alt="Residential Facilities">
+                    <div class="card-content">
+                        <h3 class="card-title">Residential Living</h3>
+                        <p>Our comfortable, home-like residences provide a safe and supportive environment for recovery. Each facility features:</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Private and semi-private rooms</li>
+                            <li>Common areas for socialization</li>
+                            <li>Outdoor spaces and gardens</li>
+                            <li>24/7 staff support</li>
+                            <li>Nutritious meal services</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/api/placeholder/400/200" alt="Therapy Spaces">
+                    <div class="card-content">
+                        <h3 class="card-title">Therapeutic Spaces</h3>
+                        <p>Dedicated areas designed to facilitate healing and personal growth:</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Individual therapy rooms</li>
+                            <li>Group session spaces</li>
+                            <li>Art and music therapy studios</li>
+                            <li>Meditation and mindfulness areas</li>
+                            <li>Physical activity spaces</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/api/placeholder/400/200" alt="Community Integration">
+                    <div class="card-content">
+                        <h3 class="card-title">Community Integration</h3>
+                        <p>Resources and spaces that help residents prepare for successful community reintegration:</p>
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Computer labs for education and job searching</li>
+                            <li>Life skills training kitchen</li>
+                            <li>Career development center</li>
+                            <li>Community meeting rooms</li>
+                            <li>Transportation services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Approach</h2>
+                <p>A holistic methodology that addresses the whole person - mind, body, and spirit.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Person-Centered Care</h3>
+                        <p>We recognize that each individual has unique needs, strengths, and goals. Our treatment plans are tailored specifically to each person, with regular assessments and adjustments to ensure optimal progress.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Evidence-Based Practices</h3>
+                        <p>Our programs utilize therapeutic approaches that have been scientifically proven to be effective, including Cognitive Behavioral Therapy, Dialectical Behavior Therapy, Motivational Interviewing, and trauma-informed care.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Holistic Wellness</h3>
+                        <p>We integrate complementary approaches such as nutrition counseling, physical fitness, mindfulness, stress management, and creative expression to support overall wellbeing and sustainable recovery.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Community Connection</h3>
+                        <p>We help residents build meaningful connections and develop support networks both within our program and in the broader community, which are essential for long-term recovery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Hear from individuals who have transformed their lives through our programs.</p>
+            </div>
+            <div class="grid">
+                <div class="card testimonial">
+                    <div class="testimonial-text">
+                        "Right Mind Homes gave me the tools and support I needed to manage my bipolar disorder and rebuild my life. The staff truly cared about my wellbeing and helped me see a future I never thought was possible."
+                    </div>
+                    <div class="testimonial-author">Michael R.</div>
+                    <div class="testimonial-role">Program Graduate, 2 Years in Recovery</div>
+                </div>
+                <div class="card testimonial">
+                    <div class="testimonial-text">
+                        "After struggling with addiction for over a decade, I finally found hope at Right Mind Homes. The dual diagnosis program addressed both my addiction and underlying depression. Today, I'm three years sober and living a fulfilling life."
+                    </div>
+                    <div class="testimonial-author">Olali T.</div>
+                    <div class="testimonial-role">Program Graduate, 3 Years in Recovery</div>
+                </div>
+                <div class="card testimonial">
+                    <div class="testimonial-text">
+                        "As a family member, I was included in my brother's treatment process. The family education program helped us understand his schizophrenia and how to provide proper support. Right Mind Homes didn't just help him—they helped our entire family heal."
+                    </div>
+                    <div class="testimonial-author">James L.</div>
+                    <div class="testimonial-role">Family Member of Program Graduate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Impact</h2>
+                <p>Making a difference in the lives of individuals and communities.</p>
+            </div>
+            <div class="grid">
+                <div class="card stats">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Of program graduates maintain recovery after one year</div>
+                </div>
+                <div class="card stats">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Individuals served annually across our facilities</div>
+                </div>
+                <div class="card stats">
+                    <div class="stat-number">76%</div>
+                    <div class="stat-label">Of residents successfully transition to independent living</div>
+                </div>
+                <div class="card stats">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Of clients report improved quality of life</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-help" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Help Today</h2>
+                <p>The journey to recovery begins with a single step. We're here to help you take that step.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Admission Process</h3>
+                        <ol style="margin-top: 15px; padding-left: 20px;">
+                            <li>Initial phone consultation</li>
+                            <li>Pre-admission assessment</li>
+                            <li>Insurance verification and financial planning</li>
+                            <li>Program selection and personalized plan development</li>
+                            <li>Arrival and orientation</li>
+                        </ol>
+                        <a href="#contact" class="btn" style="margin-top: 20px; display: inline-block;">Start The Process</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Insurance & Payment</h3>
+                        <p>We work with most major insurance providers and offer various payment options to make treatment accessible.</p>
+                        <p style="margin-top: 15px;">Accepted insurance plans include:</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Blue Cross Blue Shield</li>
+                            <li>Aetna</li>
+                            <li>Cigna</li>
+                            <li>UnitedHealthcare</li>
+                            <li>Medicare/Medicaid</li>
+                            <li>And many others</li>
+                        </ul>
+                        <p style="margin-top: 15px;">Financial assistance and sliding scale options are available for qualifying individuals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>We're available 24/7 to answer your questions and help you begin your recovery journey.</p>
+            </div>
+            <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Get In Touch</h3>
+                        <p style="margin-bottom: 20px;">Our admissions counselors are standing by to provide information, answer questions, and guide you through the first steps toward recovery.</p>
+                        
+                        <p><strong>Phone:</strong> (+234) 908-123-4567</p>
+                        <p><strong>Email:</strong> admissions@rightmindhomes.org</p>
+                        <p><strong>Address:</strong> 123 Healing Way, Pegi, Abuja 12345</p>
+                        
+                        <div style="margin-top: 30px;">
+                            <h4 style="margin-bottom: 10px;">Hours of Operation:</h4>
+                            <p>24/7 Crisis Support Line</p>
+                            <p>Administrative Office: Monday-Friday, 8am-5pm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Send Us a Message</h3>
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" placeholder="Your Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <label for="inquiry-type">Inquiry Type</label>
+                                <select id="inquiry-type">
+                                    <option value="">Select an Option</option>
+                                    <option value="admission">Admission Information</option>
+                                    <option value="program">Program Questions</option>
+                                    <option value="insurance">Insurance Verification</option>
+                                    <option value="tour">Schedule a Tour</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group full">
+                                <label for="message">Message</label>
+                                <textarea id="message" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <div class="form-group full">
+                                <button type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Right Minds Home</h3>
+                    <p>Providing compassionate care and support for mental health and addiction recovery.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="#programs">Mental Health Rehabilitation</a></li>
+                        <li><a href="#programs">Addiction Recovery</a></li>
+                        <li><a href="#programs">Dual Diagnosis Treatment</a></li>
+                        <li><a href="#programs">Family Support Services</a></li>
+                        <li><a href="#programs">Aftercare Programs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Educational Materials</a></li>
+                        <li><a href="#">Community Resources</a></li>
+                        <li><a href="#">Crisis Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#facilities">Our Facilities</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#get-help">Admissions</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Right Minds Home. All rights reserved. | <a href="#" style="color: #aaa;">Privacy Policy</a> | <a href="#" style="color: #aaa;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
